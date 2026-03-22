@@ -9,7 +9,7 @@ import ollama
 
 from poses import get_reference_image
 
-MODEL = "llava"
+MODEL = "llava:13b"
 
 mp_pose = mp.solutions.pose
 
@@ -63,7 +63,7 @@ def _compute_score(ref_kp, live_kp):
     mean_dist = float(np.mean(distances))
 
     # Map distance to 0-100: distance of 0 = 100, distance of 1.0+ = 0
-    score = max(0, min(100, int((1.0 - mean_dist / 1.2) * 100)))
+    score = max(0, min(100, int((1.0 - mean_dist / 1.5) * 100)))
     return score
 
 
@@ -116,7 +116,7 @@ def analyze_pose(pose, image_path):
     live_kp = _extract_keypoints(image_path)
 
     if live_kp is None:
-        raise RuntimeError("No body detected — make sure your full body is visible in the frame.")
+        raise RuntimeError("No body detected — step back so your full body fits in the frame, then try again.")
 
     # Extract keypoints from the reference image and compute geometric score
     score = 50  # fallback if reference image keypoints cannot be extracted
