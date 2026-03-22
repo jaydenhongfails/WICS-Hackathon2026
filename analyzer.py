@@ -63,7 +63,7 @@ def _compute_score(ref_kp, live_kp):
     mean_dist = float(np.mean(distances))
 
     # Map distance to 0-100: distance of 0 = 100, distance of 1.0+ = 0
-    score = max(0, min(100, int((1.0 - mean_dist / 1.5) * 100)))
+    score = max(0, min(100, int((1.0 - mean_dist / 1.65) * 100)))
     return score
 
 

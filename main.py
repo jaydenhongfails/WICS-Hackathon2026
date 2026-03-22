@@ -10,7 +10,7 @@ from analyzer import analyze_pose
 from poses import get_pose, list_poses
 
 WINDOW_NAME = "Yoga Analyzer  |  SPACE = capture   Q = quit"
-COUNTDOWN_SECONDS = 3
+COUNTDOWN_SECONDS = 7
 
 
 # Clears the terminal screen
